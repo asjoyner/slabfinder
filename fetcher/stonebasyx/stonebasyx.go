@@ -11,8 +11,6 @@ import (
 	"strconv"
 	"strings"
 
-	"golang.org/x/net/html"
-
 	"github.com/asjoyner/slabfinder"
 )
 
@@ -62,6 +60,8 @@ func parseHTML(page []byte, fetchURL string) ([]slabfinder.Slab, error) {
 			}
 			continue
 		}
+
+		// Parse the page header for data common to all slabs
 		if color == "" && strings.Contains(line, ">Color: <") {
 			color, err = parseKey(line)
 			if err != nil {
@@ -95,6 +95,7 @@ func parseHTML(page []byte, fetchURL string) ([]slabfinder.Slab, error) {
 			}
 		}
 
+		// Parse out each lot of slabs on the page
 		if strings.Contains(line, "class=\"thumbpicsm2017\"") {
 			slab := slabfinder.Slab{
 				Vendor:    slabfinder.StoneBasyx,
@@ -111,6 +112,7 @@ func parseHTML(page []byte, fetchURL string) ([]slabfinder.Slab, error) {
 				return nil, fmt.Errorf("crafting slab photo URL: %+v", line)
 			}
 			slab.Photo = strings.Split(urlWithSuffix, "?")[0]
+			slab.URL = fetchURL
 
 			scanner.Scan() // throw away a line
 			scanner.Scan() // fetch the second line
@@ -161,8 +163,11 @@ func parseHTML(page []byte, fetchURL string) ([]slabfinder.Slab, error) {
 
 			slabs = append(slabs, slab)
 		}
-
+		if strings.Contains(line, "<!-- End main content -->") {
+			break // skip parsing the footer of the page
+		}
 	}
+
 	if err := scanner.Err(); err != nil {
 		fmt.Fprintln(os.Stderr, "scanning the HTML page:", err)
 	}
@@ -181,47 +186,4 @@ func parseKey(line string) (string, error) {
 	}
 	value = strings.Split(rightSide[2], "<")[0]
 	return value, nil
-}
-
-func parseHTMLFancy(page []byte) ([]slabfinder.Slab, error) {
-	doc, err := html.Parse(bytes.NewReader(page))
-	if err != nil {
-		return nil, fmt.Errorf("parsing login page: %s", err)
-	}
-
-	// recursively parse the HTML doc, node by node
-	// find the form with id=form, and copy its hidden input fields
-	//hiddenFields := make(map[string]string, 0)
-	var f func(*html.Node)
-	f = func(n *html.Node) {
-		if n.Type == html.ElementNode {
-			if n.Data == "h4" {
-				fmt.Println(n)
-				/*
-					var id string
-					for _, a := range n.Attr {
-						if a.Key == "id" {
-							id = a.Val
-						}
-					}
-					if id != "form" {
-						return // skip forms with the wrong id
-					}
-				*/
-			}
-			/*
-				if n.Data == "input" {
-					attrMap := unpackAttrs(n.Attr)
-					if attrMap["type"] == "hidden" {
-						hiddenFields[attrMap["name"]] = attrMap["value"]
-					}
-				}
-			*/
-		}
-		for c := n.FirstChild; c != nil; c = c.NextSibling {
-			f(c)
-		}
-	}
-	f(doc)
-	return nil, nil
 }
