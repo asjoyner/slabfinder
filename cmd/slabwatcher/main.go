@@ -12,45 +12,74 @@ import (
 	"github.com/gtuk/discordwebhook"
 
 	"github.com/asjoyner/slabfinder"
+	"github.com/asjoyner/slabfinder/fetcher/cosmos"
 	"github.com/asjoyner/slabfinder/fetcher/stonebasyx"
 )
 
+// TODO: Make these flags, default to OS config dir paths
 const (
 	slabFile = "/tmp/slabfinder.slabs.json"
 	hookFile = "/tmp/slabfinder.webhook"
 )
 
 func main() {
-	hookURL, err := os.ReadFile(hookFile)
+	hb, err := os.ReadFile(hookFile)
 	if err != nil {
 		log.Printf("reading hookfile: %s", err)
 	}
+	hookURL := strings.TrimSpace(string(hb))
 
-	// Load known slabs
-	input, err := os.ReadFile(slabFile)
+	slabs, err := loadSlabs(slabFile)
 	if err != nil {
 		log.Printf("reading known slabs: %s", err)
 		os.Exit(1)
 	}
+
+	for {
+		watch(slabs, hookURL)
+	}
+}
+
+// SlabMap is a map from the Slab.ID() to Slab for easy lookup
+type SlabMap map[uint64]slabfinder.Slab
+
+// loadSlabs loads the known slabs from disk, returns a convenient map format
+//
+// TODO: Handle bootstrap condition by checking if the file exists, and
+// accepting an arg to proceed if no file exists
+func loadSlabs(slabFile string) (SlabMap, error) {
+	input, err := os.ReadFile(slabFile)
+	if err != nil {
+		return nil, fmt.Errorf("reading known slabs: %s", err)
+	}
 	var ss []slabfinder.Slab
 	if err := json.Unmarshal(input, &ss); err != nil {
-		log.Printf("parsing known slabs: %s", err)
-		os.Exit(2)
+		return nil, fmt.Errorf("parsing known slabs: %s", err)
 	}
-	slabs := make(map[uint64]slabfinder.Slab)
+	slabs := make(SlabMap)
 	for _, slab := range ss {
 		slabs[slab.ID()] = slab // recompute the ID each time, so changing it is less cumbersome
 	}
+	return slabs, nil
+}
 
+func watch(slabs SlabMap, hookURL string) {
 	// Fetch the latest slabs
-	// TODO: generalize this to iterate over all the fetchers
+	// TODO: generalize this to iterate over all the vendors
 	thisRunTimestamp := time.Now()
-	ns, err := stonebasyx.Fetch()
+	var ns []slabfinder.Slab
+	s, err := stonebasyx.Fetch()
 	if err != nil {
 		log.Println(err)
 	}
+	ns = append(ns, s...)
+	s, err = cosmos.Fetch()
+	if err != nil {
+		log.Println(err)
+	}
+	ns = append(ns, s...)
 
-	// include new entries in the known slabs, update timestamps
+	// include new slabs in the known slabs, update timestamps
 	for _, slab := range ns {
 		if oldSlab, ok := slabs[slab.ID()]; ok {
 			slab.FirstSeen = oldSlab.FirstSeen
@@ -88,11 +117,11 @@ func main() {
 		ourSlabs = append(ourSlabs, slab)
 	}
 
-	// write HTML page of known interesting slabs
-	// send notification of new interesting slabs
-	if hookURL != nil {
+	// TODO: write HTML page of known interesting slabs?
+
+	// send Discord notification of new interesting slabs
+	if hookURL != "" {
 		discordUsername := "SlabFinder"
-		hk := strings.TrimSpace(string(hookURL))
 		for _, slab := range ourSlabs {
 			if slab.FirstSeen != slab.LastSeen {
 				continue
@@ -105,7 +134,7 @@ func main() {
 				Content:  &content,
 				Embeds:   &[]discordwebhook.Embed{embed},
 			}
-			if err := discordwebhook.SendMessage(hk, msg); err != nil {
+			if err := discordwebhook.SendMessage(hookURL, msg); err != nil {
 				fmt.Println(err)
 			}
 		}
