@@ -20,5 +20,8 @@
 # Go workspace file
 go.work
 
+# vim .swp files
+*.swp
+
 # Go binaries
 cmd/slabwatcher/slabwatcher
