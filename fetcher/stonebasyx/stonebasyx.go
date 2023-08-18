@@ -52,6 +52,7 @@ func parseHTML(page []byte, fetchURL string) ([]slabfinder.Slab, error) {
 	var foundContent bool
 	var err error
 	scanner := bufio.NewScanner(bytes.NewReader(page))
+	scanner.Buffer(make([]byte, 0), 512*1024)
 	for scanner.Scan() {
 		line := scanner.Text()
 		if !foundContent { // skip a lot of headers

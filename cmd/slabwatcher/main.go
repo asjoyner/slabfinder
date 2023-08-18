@@ -139,5 +139,6 @@ func watch(slabs SlabMap, hookURL string) {
 			}
 		}
 	}
+	fmt.Println("Sleeping for 15 minutes.")
 	time.Sleep(15 * time.Minute)
 }
