@@ -20,7 +20,7 @@ func TestParseHTML(t *testing.T) {
 		{
 			name:  "Classic",
 			input: "testdata/classic.html",
-			url:   classic,
+			url:   slabTypes[0],
 			want: []slabfinder.Slab{
 				{
 					Color:     "Black, White",
@@ -33,7 +33,7 @@ func TestParseHTML(t *testing.T) {
 					Width:     78.5,
 					Vendor:    slabfinder.StoneBasyx,
 					Photo:     "https://www.stonebasyx.com/_siteadmin2015/bundlepics/536-104-127760-MAORI%20-%203.00%20CM%20-%20022632%20-%20127760.JPEG",
-					URL:       classic,
+					URL:       slabTypes[0],
 				},
 				{
 					Color:     "Black, White",
@@ -46,7 +46,7 @@ func TestParseHTML(t *testing.T) {
 					Count:     2,
 					Vendor:    1,
 					Photo:     "https://www.stonebasyx.com/_siteadmin2015/bundlepics/536-115-13021-MAORI_Bund_13021_BLK_102_3cm_Premium_pic_34775.jpg",
-					URL:       classic,
+					URL:       slabTypes[0],
 				},
 				{
 					Color:     "Black, White",
@@ -59,7 +59,7 @@ func TestParseHTML(t *testing.T) {
 					Count:     2,
 					Vendor:    1,
 					Photo:     "https://www.stonebasyx.com/_siteadmin2015/bundlepics/536-66-210783239-MAORI%20POLISHED_block017899%20%20%20%20_bundle210783239_3CM.jpg",
-					URL:       classic,
+					URL:       slabTypes[0],
 				},
 				{
 					Color:     "Black, White",
@@ -72,7 +72,7 @@ func TestParseHTML(t *testing.T) {
 					Count:     2,
 					Vendor:    1,
 					Photo:     "https://www.stonebasyx.com/_siteadmin2015/bundlepics/536-66-210783241-MAORI%20POLISHED_block017899%20%20%20%20_bundle210783241_3CM.jpg",
-					URL:       classic,
+					URL:       slabTypes[0],
 				},
 				{
 					Color:     "Black, White",
@@ -85,7 +85,7 @@ func TestParseHTML(t *testing.T) {
 					Count:     1,
 					Vendor:    1,
 					Photo:     "https://www.stonebasyx.com/_siteadmin2015/bundlepics/536-115-13026-MAORI_Bund_13026_BLK_102_3cm_Premium_pic_34871.jpg",
-					URL:       classic,
+					URL:       slabTypes[0],
 				},
 				{
 					Color:     "Black, White",
@@ -98,7 +98,7 @@ func TestParseHTML(t *testing.T) {
 					Count:     6,
 					Vendor:    1,
 					Photo:     "https://www.stonebasyx.com/_siteadmin2015/bundlepics/536-270-11348-MAORI%203CM%20-%20SLABS%2009-14%20-%20BLK%20204.jpeg",
-					URL:       classic,
+					URL:       slabTypes[0],
 				},
 				{
 					Color:     "Black, White",
@@ -111,7 +111,7 @@ func TestParseHTML(t *testing.T) {
 					Count:     4,
 					Vendor:    1,
 					Photo:     "https://www.stonebasyx.com/_siteadmin2015/bundlepics/536-100-145807-COPACABANA%20-%203CM%20-%20BLOCK%2020411.%20-%20SLABS%2016%20TO%2022.jpg",
-					URL:       classic,
+					URL:       slabTypes[0],
 				},
 				{
 					Color:     "Black, White",
@@ -124,7 +124,7 @@ func TestParseHTML(t *testing.T) {
 					Count:     2,
 					Vendor:    1,
 					Photo:     "https://www.stonebasyx.com/_siteadmin2015/bundlepics/536-115-13020-MAORI_Bund_13020_BLK_102_3cm_Premium_pic_34780.jpg",
-					URL:       classic,
+					URL:       slabTypes[0],
 				},
 				{
 					Color:     "Black, White",
@@ -137,7 +137,7 @@ func TestParseHTML(t *testing.T) {
 					Count:     2,
 					Vendor:    1,
 					Photo:     "https://www.stonebasyx.com/_siteadmin2015/bundlepics/536-115-13025-MAORI_Bund_13025_BLK_102_3cm_Premium_pic_34869.jpg",
-					URL:       classic,
+					URL:       slabTypes[0],
 				},
 				{
 					Color:     "Black, White",
@@ -150,7 +150,7 @@ func TestParseHTML(t *testing.T) {
 					Count:     2,
 					Vendor:    1,
 					Photo:     "https://www.stonebasyx.com/_siteadmin2015/bundlepics/536-100-145809-COPACABANA%20-%203CM%20-%20BLOCK%2020411.%20-%20SLABS%2023%20TO%2030.jpg",
-					URL:       classic,
+					URL:       slabTypes[0],
 				},
 				{
 					Color:     "Black, White",
@@ -163,7 +163,7 @@ func TestParseHTML(t *testing.T) {
 					Count:     1,
 					Vendor:    1,
 					Photo:     "https://www.stonebasyx.com/_siteadmin2015/bundlepics/536-104-119453-COPACABANA%20-%203.00%20CM%20-%20021700%20-%20119453.JPEG",
-					URL:       classic,
+					URL:       slabTypes[0],
 				},
 				{
 					Color:     "Black, White",
@@ -176,7 +176,7 @@ func TestParseHTML(t *testing.T) {
 					Count:     1,
 					Vendor:    1,
 					Photo:     "https://www.stonebasyx.com/_siteadmin2015/bundlepics/536-115-13021-MAORI_Bund_13021_BLK_102_3cm_Premium_pic_34775.jpg",
-					URL:       classic,
+					URL:       slabTypes[0],
 				},
 				{
 					Color:     "Black, White",
@@ -189,7 +189,7 @@ func TestParseHTML(t *testing.T) {
 					Count:     1,
 					Vendor:    1,
 					Photo:     "https://www.stonebasyx.com/_siteadmin2015/bundlepics/536-66-210783239-MAORI%20POLISHED_block017899%20%20%20%20_bundle210783239_3CM.jpg",
-					URL:       classic,
+					URL:       slabTypes[0],
 				},
 				{
 					Color:     "Black, White",
@@ -202,7 +202,7 @@ func TestParseHTML(t *testing.T) {
 					Count:     1,
 					Vendor:    1,
 					Photo:     "https://www.stonebasyx.com/_siteadmin2015/bundlepics/536-66-210783240-MAORI%20POLISHED_block017899%20%20%20%20_bundle210783240_3CM.jpg",
-					URL:       classic,
+					URL:       slabTypes[0],
 				},
 				{
 					Color:     "Black, White",
@@ -215,7 +215,7 @@ func TestParseHTML(t *testing.T) {
 					Count:     5,
 					Vendor:    1,
 					Photo:     "https://www.stonebasyx.com/_siteadmin2015/bundlepics/536-267-007-MAORI%203cm%20Block%2075%20Slab%20033-037.JPG",
-					URL:       classic,
+					URL:       slabTypes[0],
 				},
 				{
 					Color:     "Black, White",
@@ -228,7 +228,7 @@ func TestParseHTML(t *testing.T) {
 					Count:     5,
 					Vendor:    1,
 					Photo:     "https://www.stonebasyx.com/_siteadmin2015/bundlepics/536-267-008-MAORI%203cm%20Block%2075%20Slab%20038-042.JPG",
-					URL:       classic,
+					URL:       slabTypes[0],
 				},
 				{
 					Color:     "Black, White",
@@ -241,7 +241,7 @@ func TestParseHTML(t *testing.T) {
 					Count:     1,
 					Vendor:    1,
 					Photo:     "https://www.stonebasyx.com/_siteadmin2015/bundlepics/536-100-145806-COPACABANA%20-%203CM%20-%20BLOCK%2020411.%20-%20SLABS%2011%20TO%2015.jpg",
-					URL:       classic,
+					URL:       slabTypes[0],
 				},
 				{
 					Color:     "Black, White",
@@ -254,7 +254,7 @@ func TestParseHTML(t *testing.T) {
 					Count:     1,
 					Vendor:    1,
 					Photo:     "https://www.stonebasyx.com/_siteadmin2015/bundlepics/536-104-3369-Copacabana%20bundle%203369.jpg",
-					URL:       classic,
+					URL:       slabTypes[0],
 				},
 				{
 					Color:     "Black, White",
@@ -267,7 +267,7 @@ func TestParseHTML(t *testing.T) {
 					Count:     3,
 					Vendor:    1,
 					Photo:     "https://www.stonebasyx.com/_siteadmin2015/bundlepics/536-115-13022-MAORI_Bund_13022_BLK_102_3cm_Premium_pic_34786.jpg",
-					URL:       classic,
+					URL:       slabTypes[0],
 				},
 				{
 					Color:     "Black, White",
@@ -280,7 +280,7 @@ func TestParseHTML(t *testing.T) {
 					Count:     2,
 					Vendor:    1,
 					Photo:     "https://www.stonebasyx.com/_siteadmin2015/bundlepics/536-115-8404-MAORI_Bund_8404_BLK_27_3cm_Premium_pic0.jpg",
-					URL:       classic,
+					URL:       slabTypes[0],
 				},
 				{
 					Color:     "Black, White",
@@ -293,7 +293,7 @@ func TestParseHTML(t *testing.T) {
 					Count:     1,
 					Vendor:    1,
 					Photo:     "https://www.stonebasyx.com/_siteadmin2015/bundlepics/536-100-145806-COPACABANA%20-%203CM%20-%20BLOCK%2020411.%20-%20SLABS%2011%20TO%2015.jpg",
-					URL:       classic,
+					URL:       slabTypes[0],
 				},
 				{
 					Color:     "Black, White",
@@ -306,7 +306,7 @@ func TestParseHTML(t *testing.T) {
 					Count:     7,
 					Vendor:    1,
 					Photo:     "https://www.stonebasyx.com/_siteadmin2015/bundlepics/712-45-14991-MAORI%203CM%2014991.jpg",
-					URL:       classic,
+					URL:       slabTypes[0],
 				},
 				{
 					Color:     "Black, White",
@@ -319,7 +319,7 @@ func TestParseHTML(t *testing.T) {
 					Count:     7,
 					Vendor:    1,
 					Photo:     "https://www.stonebasyx.com/_siteadmin2015/bundlepics/712-45-14993-MAORI%203CM%2014993.jpg",
-					URL:       classic,
+					URL:       slabTypes[0],
 				},
 				{
 					Color:     "Black, White",
@@ -332,7 +332,7 @@ func TestParseHTML(t *testing.T) {
 					Count:     6,
 					Vendor:    1,
 					Photo:     "https://www.stonebasyx.com/_siteadmin2015/bundlepics/536-115-13384-MAORI_Bund_13384_BLK_SKY108_3cm_Premium_pic_35507.jpg",
-					URL:       classic,
+					URL:       slabTypes[0],
 				},
 				{
 					Color:     "Black, White",
@@ -345,7 +345,7 @@ func TestParseHTML(t *testing.T) {
 					Count:     6,
 					Vendor:    1,
 					Photo:     "https://www.stonebasyx.com/_siteadmin2015/bundlepics/536-115-13387-MAORI_Bund_13387_BLK_SKY108_3cm_Premium_pic_35513.jpg",
-					URL:       classic,
+					URL:       slabTypes[0],
 				},
 				{
 					Color:     "Black, White",
@@ -358,7 +358,7 @@ func TestParseHTML(t *testing.T) {
 					Count:     3,
 					Vendor:    1,
 					Photo:     "https://www.stonebasyx.com/_siteadmin2015/bundlepics/536-115-13385-MAORI_Bund_13385_BLK_SKY108_3cm_Premium_pic_35509.jpg",
-					URL:       classic,
+					URL:       slabTypes[0],
 				},
 				{
 					Color:     "Black, White",
@@ -371,14 +371,14 @@ func TestParseHTML(t *testing.T) {
 					Count:     1,
 					Vendor:    1,
 					Photo:     "https://www.stonebasyx.com/_siteadmin2015/bundlepics/536-115-13021-MAORI_Bund_13021_BLK_102_3cm_Premium_pic_34775.jpg",
-					URL:       classic,
+					URL:       slabTypes[0],
 				},
 			},
 		},
 		{
 			name:  "Honed",
 			input: "testdata/honed.html",
-			url:   honed,
+			url:   slabTypes[1],
 			want: []slabfinder.Slab{
 				{
 					Color:     "Black, White",
@@ -391,7 +391,7 @@ func TestParseHTML(t *testing.T) {
 					Count:     6,
 					Vendor:    1,
 					Photo:     "https://www.stonebasyx.com/_siteadmin2015/bundlepics/690-2-358910-BD%20358910%20BLK038651%20MAORI%20HONED%20SPECIAL.jpg",
-					URL:       honed,
+					URL:       slabTypes[1],
 				},
 				{
 					Color:     "Black, White",
@@ -404,7 +404,7 @@ func TestParseHTML(t *testing.T) {
 					Count:     5,
 					Vendor:    1,
 					Photo:     "https://www.stonebasyx.com/_siteadmin2015/bundlepics/690-2-358911-BD%20358911%20BLK038651%20MAORI%20HONED%20SPECIAL.jpg",
-					URL:       honed,
+					URL:       slabTypes[1],
 				},
 				{
 					Color:     "Black, White",
@@ -417,7 +417,7 @@ func TestParseHTML(t *testing.T) {
 					Count:     6,
 					Vendor:    1,
 					Photo:     "https://www.stonebasyx.com/_siteadmin2015/bundlepics/690-2-358908-BD%20358908%20BLK038651%20MAORI%20HONED%20SPECIAL.jpg",
-					URL:       honed,
+					URL:       slabTypes[1],
 				},
 				{
 					Color:     "Black, White",
@@ -430,7 +430,7 @@ func TestParseHTML(t *testing.T) {
 					Count:     6,
 					Vendor:    1,
 					Photo:     "https://www.stonebasyx.com/_siteadmin2015/bundlepics/690-2-358909-BD%20358909%20BLK038651%20MAORI%20HONED%20SPECIAL.jpg",
-					URL:       honed,
+					URL:       slabTypes[1],
 				},
 				{
 					Color:     "Black, White",
@@ -443,7 +443,7 @@ func TestParseHTML(t *testing.T) {
 					Count:     5,
 					Vendor:    1,
 					Photo:     "https://www.stonebasyx.com/_siteadmin2015/bundlepics/690-2-358912-BD%20358912%20BLK038651%20MAORI%20HONED%20SPECIAL.jpg",
-					URL:       honed,
+					URL:       slabTypes[1],
 				},
 				{
 					Color:     "Black, White",
@@ -456,7 +456,7 @@ func TestParseHTML(t *testing.T) {
 					Count:     2,
 					Vendor:    1,
 					Photo:     "https://www.stonebasyx.com/_siteadmin2015/bundlepics/536-1-81534-SILVER%20GRAY%203CM%20-%20022224%20-%2081534.JPEG",
-					URL:       honed,
+					URL:       slabTypes[1],
 				},
 				{
 					Color:     "Black, White",
@@ -469,14 +469,14 @@ func TestParseHTML(t *testing.T) {
 					Count:     1,
 					Vendor:    1,
 					Photo:     "https://www.stonebasyx.com/_siteadmin2015/bundlepics/536-1-81534-SILVER%20GRAY%203CM%20-%20022224%20-%2081534.JPEG",
-					URL:       honed,
+					URL:       slabTypes[1],
 				},
 			},
 		},
 		{
 			name:  "Leather",
 			input: "testdata/leather.html",
-			url:   leather,
+			url:   slabTypes[2],
 			want: []slabfinder.Slab{
 				{
 					Color:     "Black",
@@ -489,7 +489,7 @@ func TestParseHTML(t *testing.T) {
 					Count:     2,
 					Vendor:    1,
 					Photo:     "https://www.stonebasyx.com/_siteadmin2015/bundlepics/712-45-14994-MAORI%203CM%2014994.jpg",
-					URL:       leather,
+					URL:       slabTypes[2],
 				},
 				{
 					Color:     "Black",
@@ -502,7 +502,7 @@ func TestParseHTML(t *testing.T) {
 					Count:     2,
 					Vendor:    1,
 					Photo:     "https://www.stonebasyx.com/_siteadmin2015/bundlepics/712-45-14995-MAORI%203CM%2014995.jpg",
-					URL:       leather,
+					URL:       slabTypes[2],
 				},
 				{
 					Color:     "Black",
@@ -515,7 +515,7 @@ func TestParseHTML(t *testing.T) {
 					Count:     6,
 					Vendor:    1,
 					Photo:     "https://www.stonebasyx.com/_siteadmin2015/bundlepics/712-45-15463-MAORI%203CM%2015463.jpg",
-					URL:       leather,
+					URL:       slabTypes[2],
 				},
 				{
 					Color:     "Black",
@@ -528,7 +528,7 @@ func TestParseHTML(t *testing.T) {
 					Count:     4,
 					Vendor:    1,
 					Photo:     "https://www.stonebasyx.com/_siteadmin2015/bundlepics/712-45-15460-MAORI%203CM%2015460.jpg",
-					URL:       leather,
+					URL:       slabTypes[2],
 				},
 				{
 					Color:     "Black",
@@ -541,7 +541,7 @@ func TestParseHTML(t *testing.T) {
 					Count:     3,
 					Vendor:    1,
 					Photo:     "https://www.stonebasyx.com/_siteadmin2015/bundlepics/712-45-14996-MAORI%203CM%2014996.jpg",
-					URL:       leather,
+					URL:       slabTypes[2],
 				},
 				{
 					Color:     "Black",
@@ -554,7 +554,7 @@ func TestParseHTML(t *testing.T) {
 					Count:     1,
 					Vendor:    1,
 					Photo:     "https://www.stonebasyx.com/_siteadmin2015/bundlepics/712-45-14995-MAORI%203CM%2014995.jpg",
-					URL:       leather,
+					URL:       slabTypes[2],
 				},
 				{
 					Color:     "Black",
@@ -567,7 +567,7 @@ func TestParseHTML(t *testing.T) {
 					Count:     1,
 					Vendor:    1,
 					Photo:     "https://www.stonebasyx.com/_siteadmin2015/bundlepics/712-45-15462-MAORI%203CM%2015462.jpg",
-					URL:       leather,
+					URL:       slabTypes[2],
 				},
 			},
 		},

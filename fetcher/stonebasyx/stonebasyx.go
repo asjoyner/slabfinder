@@ -14,16 +14,27 @@ import (
 	"github.com/asjoyner/slabfinder"
 )
 
-const (
-	classic string = "https://www.stonebasyx.com/live-inventory/product-details/?selproductid=536"
-	honed   string = "https://www.stonebasyx.com/live-inventory/product-details/?selproductid=690"
-	leather string = "https://www.stonebasyx.com/live-inventory/product-details/?selproductid=712"
+var (
+	slabTypes = []string{
+		// classic
+		"https://www.stonebasyx.com/live-inventory/product-details/?selproductid=536",
+		// honed
+		"https://www.stonebasyx.com/live-inventory/product-details/?selproductid=690",
+		// leather
+		"https://www.stonebasyx.com/live-inventory/product-details/?selproductid=712",
+		// titanium
+		"https://www.stonebasyx.com/live-inventory/product-details/?selproductid=28",
+		// titaniumDual
+		"https://www.stonebasyx.com/live-inventory/product-details/?selproductid=784",
+		// titaniumLeathered
+		"https://www.stonebasyx.com/live-inventory/product-details/?selproductid=168",
+	}
 )
 
 // Fetch consults all the StoneBasyx pages and returns the currently available slabs.
 func Fetch() ([]slabfinder.Slab, error) {
 	var slabs []slabfinder.Slab
-	for _, url := range []string{classic, honed, leather} {
+	for _, url := range slabTypes {
 		resp, err := http.Get(url)
 		if err != nil {
 			fmt.Errorf("fetching URL: %s", err)
